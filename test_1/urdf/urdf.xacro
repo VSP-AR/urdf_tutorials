@@ -1,0 +1,134 @@
+<?xml version = "1.0"?>
+<robot name = "scara" xmlns:xacro="http://www.ros.org/wiki/xacro">
+ 
+  <!-- Used for fixing robot to 'base_link' -->
+  <link name="base_link"/>
+
+  <material name="blue">
+    <color rgba="0 0 1 1" />
+  </material>
+
+  <material name="red">
+    <color rgba="1 0 0 1" />
+  </material>
+
+  <material name="green">
+    <color rgba="0 1 0 1" />
+  </material>
+
+
+  <!-- Links-->
+  <link name = "link_1">
+    <visual>
+      <geometry>
+        <box size = "0.12 0.12 0.05"/>
+      </geometry>
+      <material name = "red"/>
+      <origin xyz = "0 0 0"/>
+    </visual>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0.025" rpy="0 0 0" />
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+    </inertial>
+  </link>
+
+  <link name = "link_2">
+    <visual>
+      <geometry>
+        <cylinder length = "0.45" radius = "0.05"/>
+      </geometry>
+      <material name = "blue"/>
+      <origin xyz = "0 0 0.225"/>
+    </visual>
+    <inertial>
+      <mass value="0.5" />
+      <origin xyz="0 0 0.05" rpy="0 0 0" />
+      <inertia ixx="0.5" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.5" />
+    </inertial>
+  </link>
+
+  <link name = "link_3">
+    <visual>
+      <geometry>
+        <box size = "0.1 0.1 0.425"/>
+      </geometry>
+      <material name = "red"/>
+      <origin rpy = "0 1.571 0" xyz = "0.2125 0 0"/>
+    </visual>
+    <inertial>
+      <mass value="0.5" />
+      <origin xyz="0.2125 0 0" rpy="0 0 0" />
+      <inertia ixx="0.5" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.5" />
+    </inertial>
+  </link>
+
+  <link name = "link_4">
+    <visual>
+      <geometry>
+        <cylinder length = "0.2" radius = "0.05"/>
+      </geometry>
+      <material name = "blue"/>
+      <origin rpy = "0 0 0" xyz = "0 0 0"/>
+    </visual>
+    <inertial>
+      <mass value="0.5" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      v<inertia ixx="0.5" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.5" />
+    </inertial>
+  </link>
+
+  <link name = "link_5">
+    <visual>
+      <geometry>
+        <box size = "0.1 0.1 0.345"/>
+      </geometry>
+      <material name = "red"/>
+      <origin rpy = "0 1.571 0" xyz = "0.1725 0 0"/>
+    </visual>
+    <inertial>
+      <mass value="0.5" />
+      <origin xyz="0.1725 0 0" rpy="0 0 0" />
+      v<inertia ixx="0.5" ixy="0" ixz="0" iyy="0.5" iyz="0" izz="0.5" />
+    </inertial>
+  </link>
+  
+  <!--Fixed joint-->
+  <joint name="fixedjoint_1" type="fixed">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+  </joint>
+
+  <joint name = "fixedjoint_2" type="fixed">
+    <parent link = "link_2"/>
+    <child link = "link_3"/>
+    <origin xyz = "0 0 0.4"/>
+  </joint>
+
+  <joint name = "fixedjoint_3" type="fixed">
+    <parent link = "link_4"/>
+    <child link = "link_5"/>
+    <origin xyz = "0 0 0.05"/>
+  </joint> 
+
+ 
+  <!-- rotating joints  -->
+  <joint name = "revolute_1" type="revolute">
+    <parent link = "link_1"/>
+    <child link = "link_2"/>
+    <origin xyz = "0 0 0.05"/>
+    <limit effort="1000.0" lower="-1.57" upper="1.57" velocity="0.5"/>
+    <axis xyz = "0 0 1"/>
+    <dynamics damping="0.2" friction="0.1" />
+  </joint>
+
+  <joint name = "revolute_2" type="revolute">
+    <parent link = "link_3"/>
+    <child link = "link_4"/>
+    <origin xyz = "0.425 0 0.05"/>
+    <limit effort="1000.0" lower="-1.57" upper="1.57" velocity="0.5"/>
+    <axis xyz = "0 0 1"/>
+    <dynamics damping="0.2" friction="0.1" />
+  </joint>
+
+</robot>
