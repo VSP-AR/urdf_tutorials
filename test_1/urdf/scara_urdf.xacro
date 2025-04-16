@@ -6,7 +6,7 @@
   <xacro:property name="l3" value="0.425"/>
   <xacro:property name="l4" value="0.2"/>
   <xacro:property name="l4_r" value="0.05"/>
-  <xacro:property name="l5" value="0.345"/>
+  <xacro:property name="l5" value="0.3"/>
   <xacro:property name="gripper_length" value="0.1"/>
 
 
@@ -117,7 +117,7 @@
 
   <link name="gripper_link">
     <visual>
-      <origin xyz="0 0 ${-gripper_length/2}" />
+      <origin xyz="0 0 0" />
       <geometry>
         <box size="0.08 0.08 ${gripper_length}" />
       </geometry>
@@ -125,7 +125,7 @@
     </visual>
     <inertial>
       <mass value="0.2"/>
-      <origin xyz="0 0 ${-gripper_length/2}" />
+      <origin xyz="0 0 0" />
       <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1"/>
     </inertial>
   </link>
@@ -151,7 +151,7 @@
   <joint name="gripper_joint" type="fixed">
     <parent link="link_6"/>
     <child link="gripper_link"/>
-    <origin xyz="0 0 0" />
+    <origin xyz="0 0 ${-gripper_length/2}" />
   </joint>
 
   
@@ -178,7 +178,7 @@
     <parent link="link_5" />
     <child link="link_6" />
     <origin xyz="${l5} 0 0" rpy="0 0 0" />
-    <axis xyz="0 0 1" />
-    <limit lower="0.0" upper="${-l5}" effort="100"  velocity="1.0" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0.0" upper="${l5}" effort="100"  velocity="1.0" />
   </joint>
 </robot>
