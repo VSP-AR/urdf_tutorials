@@ -32,6 +32,7 @@
         <child link="link1"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
       </joint>
+    </xacro:macro>  
   
   <!-- Prismatic joint 1 -->
   <xacro:macro name="link2" params="l1">
