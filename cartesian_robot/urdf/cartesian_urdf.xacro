@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="cartesian_robot">
 
-  <!-- <xacro:include filename="macro.xacro"/> -->
-
   <material name="blue">
     <color rgba="0 0 1 1" />
   </material>
@@ -26,116 +24,143 @@
 
   <link name="link1">
     <inertial>
-     <origin xyz="0 0 0" rpy="0 0 0"/>
-     <mass value="1"/>
-     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />          
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100"/>
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="${l1} ${width} ${width}" />
+        <box size="${l1} ${width} ${width}"/>
       </geometry>
-      <material name="blue" />
+      <material name="blue"/>
     </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${l1} ${width} ${width}"/>
+      </geometry>
+    </collision>
   </link>
 
   <link name="link1_b">
     <inertial>
-     <origin xyz="0 0 0" rpy="0 0 0"/>
-     <mass value="1"/>
-     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />          
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100"/>
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="${l1} ${width} ${width}" />
+        <box size="${l1} ${width} ${width}"/>
       </geometry>
-      <material name="blue" />
+      <material name="blue"/>
     </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${l1} ${width} ${width}"/>
+      </geometry>
+    </collision>
   </link>
 
   <link name="link2">
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <mass value="1"/>
-      <inertia ixx="1000"  ixy="0"  ixz="0" iyy="1000" iyz="0" izz="1000" />          
-     </inertial>
+      <inertia ixx="1000" ixy="0" ixz="0" iyy="1000" iyz="0" izz="1000"/>
+    </inertial>
     <visual>
-      <origin xyz="0 ${l2/2} 0" rpy="0 0 0" />
+      <origin xyz="0 ${l2/2} 0" rpy="0 0 0"/>
       <geometry>
-        <box size="${width} ${l2} ${width}" />
+        <box size="${width} ${l2} ${width}"/>
       </geometry>
-      <material name="red" />
+      <material name="red"/>
     </visual>
+    <collision>
+      <origin xyz="0 ${l2/2} 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${width} ${l2} ${width}"/>
+      </geometry>
+    </collision>
   </link>
 
   <link name="link3">
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <mass value="1"/>
-      <inertia ixx="1000"  ixy="0"  ixz="0" iyy="1000" iyz="0" izz="1000" />          
-     </inertial>
+      <inertia ixx="1000" ixy="0" ixz="0" iyy="1000" iyz="0" izz="1000"/>
+    </inertial>
     <visual>
-      <origin xyz="0 0 ${-l3/2}" rpy="0 0 0" />
+      <origin xyz="0 0 ${-l3/2}" rpy="0 0 0"/>
       <geometry>
-        <box size="${width} ${width} ${l3}" />
+        <box size="${width} ${width} ${l3}"/>
       </geometry>
-      <material name="green" />
+      <material name="green"/>
     </visual>
+    <collision>
+      <origin xyz="0 0 ${-l3/2}" rpy="0 0 0"/>
+      <geometry>
+        <box size="${width} ${width} ${l3}"/>
+      </geometry>
+    </collision>
   </link>
 
   <link name="link4">
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <mass value="1"/>
-      <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />          
-     </inertial>
+      <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100"/>
+    </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="${l4} ${l4} ${l4}" />
+        <box size="${l4} ${l4} ${l4}"/>
       </geometry>
-      <material name="blue" />
+      <material name="blue"/>
     </visual>
-  </link> 
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${l4} ${l4} ${l4}"/>
+      </geometry>
+    </collision>
+  </link>
 
-  <!-- Fixed link -->
   <joint name="fixed_link_1" type="fixed">
-    <parent link="base_link" />
-    <child link="link1" />
-    <origin xyz="0 0 ${z_offset}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="link1"/>
+    <origin xyz="0 0 ${z_offset}" rpy="0 0 0"/>
   </joint>
 
   <joint name="fixed_link_1_b" type="fixed">
-    <parent link="base_link" />
-    <child link="link1_b" />
-    <origin xyz="0 ${l2} ${z_offset}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="link1_b"/>
+    <origin xyz="0 ${l2} ${z_offset}" rpy="0 0 0"/>
   </joint>
 
-  <!-- Prismatic joint 1 -->
   <joint name="prismatic_joint_1" type="prismatic">
-    <parent link="link1" />
-    <child link="link2" />
-    <origin xyz="${-l1/2} 0 0" rpy="0 0 0" />
-    <axis xyz="1 0 0" />
-    <limit lower="0.0" upper="${l1}" effort="10" velocity="1.0" />
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="${-l1/2} 0 0" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="0.0" upper="${l1}" effort="10" velocity="2.0"/>
   </joint>
 
-  <!-- Prismatic joint 2 -->
   <joint name="prismatic_joint_2" type="prismatic">
-    <parent link="link2" />
-    <child link="link3" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <axis xyz="0 1 0" />
-    <limit lower="0.0" upper="${l2}" effort="100" velocity="1.0" />
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0.0" upper="${l2}" effort="100" velocity="2.0"/>
   </joint>
 
-  <!-- Prismatic joint 3 -->
   <joint name="prismatic_joint_3" type="prismatic">
-    <parent link="link3" />
-    <child link="link4" />
-    <origin xyz="${width} 0 0" rpy="0 0 0" />
-    <axis xyz="0 0 -1" />
-    <limit lower="0.0" upper="${l3}" effort="100"  velocity="1.0" />
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin xyz="${width} 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="0.0" upper="${l3}" effort="100" velocity="2.0"/>
   </joint>
+
 </robot>

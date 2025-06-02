@@ -1,0 +1,6 @@
+# Default initial positions for cartesian_robot's ros2_control fake system
+
+initial_positions:
+  prismatic_joint_1: 0
+  prismatic_joint_2: 0
+  prismatic_joint_3: 0
