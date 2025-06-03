@@ -7,4 +7,19 @@ moveit_setup_assistant_config:
   package_settings:
     author_name: Aswathy R Menon
     author_email: aswathy.ramachandran.menon@ipa.fraunhofer.de
-    generated_timestamp: 1748864893
+    generated_timestamp: 1748958821
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

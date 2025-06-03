@@ -20,3 +20,4 @@ cartesian_robot_slider_controller:
       - position
     state_interfaces:
       - position
+      - velocity

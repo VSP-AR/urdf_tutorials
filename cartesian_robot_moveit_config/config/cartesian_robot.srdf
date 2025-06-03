@@ -22,7 +22,12 @@
         <joint name="prismatic_joint_3" value="0.587"/>
     </group_state>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
-    <disable_collisions link1="link1" link2="link1_b" reason="Adjacent"/>
+    <disable_collisions link1="holder_link" link2="link1" reason="Adjacent"/>
+    <disable_collisions link1="holder_link" link2="link1_b" reason="Adjacent"/>
+    <disable_collisions link1="holder_link" link2="link2" reason="Never"/>
+    <disable_collisions link1="holder_link" link2="link3" reason="Never"/>
+    <disable_collisions link1="holder_link" link2="link4" reason="Never"/>
+    <disable_collisions link1="link1" link2="link1_b" reason="Never"/>
     <disable_collisions link1="link1" link2="link2" reason="Adjacent"/>
     <disable_collisions link1="link1" link2="link3" reason="Default"/>
     <disable_collisions link1="link1" link2="link4" reason="Default"/>
