@@ -1,12 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="cartesian_robot">
 
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/</robotNamespace>
-    </plugin>
-  </gazebo>
-
   <material name="blue">
     <color rgba="0 0 1 1" />
   </material>
@@ -27,33 +21,28 @@
   <xacro:property name="l3" value="0.8" />
   <xacro:property name="l4" value="0.2" />
   <xacro:property name="width" value="0.2" />
+  <xacro:property name="holder_offset" value="${z_offset + 0.5}"/>
 
   <link name="holder_link">
     <inertial>
-      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <origin xyz="0 ${-width} 0.5" rpy="0 0 0"/>
       <mass value="1000"/>
       <inertia ixx="1000" ixy="0" ixz="0" iyy="1000" iyz="0" izz="1000"/>
     </inertial>
     <visual>
-      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <origin xyz="0 ${-width} 0.5" rpy="0 0 0"/>
       <geometry>
-        <box size="${width} ${width} ${z_offset}"/>
+        <box size="${holder_offset} ${width} ${holder_offset}"/>
       </geometry>
       <material name="red"/>
     </visual>
     <collision>
-      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <origin xyz="0 ${-width} 0.5" rpy="0 0 0"/>
       <geometry>
-        <box size="${width} ${width} ${z_offset}"/>
+        <box size="${holder_offset} ${width} ${holder_offset}"/>
       </geometry>
     </collision>
   </link>
-
-  <joint name="fixed_holder_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="holder_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
 
 
   <link name="link1">
@@ -160,6 +149,12 @@
       </geometry>
     </collision>
   </link>
+
+   <joint name="fixed_holder_joint" type="fixed">
+    <parent link="holder_link"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
 
   <joint name="fixed_link_1" type="fixed">
     <parent link="base_link"/>
