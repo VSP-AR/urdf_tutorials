@@ -28,6 +28,34 @@
   <xacro:property name="l4" value="0.2" />
   <xacro:property name="width" value="0.2" />
 
+  <link name="holder_link">
+    <inertial>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <mass value="1000"/>
+      <inertia ixx="1000" ixy="0" ixz="0" iyy="1000" iyz="0" izz="1000"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="${width} ${width} ${z_offset}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="${width} ${width} ${z_offset}"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="fixed_holder_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="holder_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+
   <link name="link1">
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
