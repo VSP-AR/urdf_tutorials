@@ -151,19 +151,19 @@
   </link>
 
    <joint name="fixed_holder_joint" type="fixed">
-    <parent link="holder_link"/>
-    <child link="base_link"/>
+    <parent link="base_link"/>
+    <child link="holder_link"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 
   <joint name="fixed_link_1" type="fixed">
-    <parent link="base_link"/>
+    <parent link="holder_link"/>
     <child link="link1"/>
     <origin xyz="0 0 ${z_offset}" rpy="0 0 0"/>
   </joint>
 
   <joint name="fixed_link_1_b" type="fixed">
-    <parent link="base_link"/>
+    <parent link="holder_link"/>
     <child link="link1_b"/>
     <origin xyz="0 ${l2} ${z_offset}" rpy="0 0 0"/>
   </joint>
